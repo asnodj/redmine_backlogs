@@ -16,12 +16,13 @@ deps = Hash.new
 rails3 = Gem::Dependency.new('rails', '~>3.0')
 RAILS_VERSION_IS_3 = rails3 =~ deps['rails']
 
+gem 'delayed_job_active_record'
 gem "holidays", "~>1.0.3"
 gem "icalendar"
 # Choose nokogiri depending on RM version. This is done to avoid conflict with
 # RM 2.3 which pinned nokogiri at "<1.6.0" for group :test.
 if (redmine_version_major == 2 && redmine_version_minor == 3)
-gem "nokogiri", "< 1.6.0"
+gem 'nokogiri', '< 1.6.0', ">= 1.5.10"
 else
 gem "nokogiri"
 end
